@@ -16,7 +16,9 @@ module.exports = function (options, webpack) {
       new webpack.WatchIgnorePlugin({
         paths: [/\.js$/, /\.d\.ts$/],
       }),
-      process.env.NODE_ENV === 'development' ? new RunScriptWebpackPlugin({ name: options.output.filename, autoRestart: false }) : undefined,
+      process.env.NODE_ENV === 'development'
+        ? new RunScriptWebpackPlugin({ name: options.output.filename, autoRestart: false })
+        : () => {},
     ],
   };
 };
